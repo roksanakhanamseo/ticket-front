@@ -17,14 +17,17 @@ function SignOut() {
     setConfirm(!confirm);
   };
   const SignOutHandler = async () => {
-    const res = await fetch("http://localhost:3000/api/users/sign-out", {
-      method: "POST",
-      headers: {
-        authorization: `${localStorage.getItem("auth")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ password }),
-    });
+    const res = await fetch(
+      "https://ticket-back-production.up.railway.app/api/users/sign-out",
+      {
+        method: "POST",
+        headers: {
+          authorization: `${localStorage.getItem("auth")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ password }),
+      }
+    );
     const data = await res.json();
 
     if (data.message == "Invalid credentials") {
