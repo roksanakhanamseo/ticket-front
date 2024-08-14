@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Footer from "../components/moleculas/Footer";
 import { useNavigate } from "react-router-dom";
-import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 const NewTicket = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
@@ -11,27 +12,26 @@ const NewTicket = () => {
     payment: "",
     description: "",
   });
+  useEffect(() => {
+    if (localStorage.getItem("auth") == null) {
+      toast.error("Please login first");
+      navigate("/login");
+    }
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const newTicket = (data) => {
-    if (localStorage.getItem("auth")) {
-      return fetch(
-        "https://ticket-back-production.up.railway.app/api/tickets",
-        {
-          method: "POST",
-          headers: {
-            authorization: `${localStorage.getItem("auth")}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(data),
-        }
-      );
-    } else {
-      return { message: "Please login first" };
-    }
+    return fetch("https://ticket-back-production.up.railway.app/api/tickets", {
+      method: "POST",
+      headers: {
+        authorization: `${localStorage.getItem("auth")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
   };
 
   const Mutation = useMutation({
@@ -40,9 +40,6 @@ const NewTicket = () => {
       data.json().then((e) => {
         if (e.message == "Please add a seating and description") {
           toast.error("Please add a seating and description");
-        } else if (e.message == "Please login first") {
-          toast.error("Please login first");
-          navigate("/signin");
         } else {
           queryClient.invalidateQueries(["ticket"]);
           toast.success("Ticket created successfully");
