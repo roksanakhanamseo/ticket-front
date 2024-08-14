@@ -117,7 +117,7 @@ function SignOut() {
               <IoIosWarning />
             </div>
             <div className="text-2xl text-center py-3">
-              Are you sure you want to delete this user?
+              Are you sure you want to Sign Out?
             </div>
             <div className="flex gap-5">
               {" "}
