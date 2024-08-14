@@ -52,45 +52,46 @@ function Tickets() {
               </tr>
             </thead>
             <tbody>
-              {data?.map((ticket) => {
-                return (
-                  <tr className="text-center" key={ticket._id}>
-                    <td className="border-b border-accent py-5 px-4">
-                      <p className="text-black ">
-                        {new Date(ticket.createdAt).toLocaleString("en-US")}
-                      </p>
-                    </td>
-                    <td className="border-b border-accent py-5 px-4">
-                      <p className="text-black ">{ticket.seating}</p>
-                    </td>
-                    <td className="border-b border-accent py-5 px-4">
-                      <p className="text-black ">{ticket.payment}</p>
-                    </td>
-                    <td className="border-b rounded-full border-red-400">
-                      <div
-                        className={`rounded-full ${
-                          ticket.status === "new"
-                            ? "bg-green-500"
-                            : "bg-red-500"
-                        } h-8 w-50`}
-                      >
-                        <p className="text-black py-1">{ticket.status}</p>
-                      </div>
-                    </td>
+              {data &&
+                data?.map((ticket) => {
+                  return (
+                    <tr className="text-center" key={ticket._id}>
+                      <td className="border-b border-accent py-5 px-4">
+                        <p className="text-black ">
+                          {new Date(ticket.createdAt).toLocaleString("en-US")}
+                        </p>
+                      </td>
+                      <td className="border-b border-accent py-5 px-4">
+                        <p className="text-black ">{ticket.seating}</p>
+                      </td>
+                      <td className="border-b border-accent py-5 px-4">
+                        <p className="text-black ">{ticket.payment}</p>
+                      </td>
+                      <td className="border-b rounded-full border-red-400">
+                        <div
+                          className={`rounded-full ${
+                            ticket.status === "new"
+                              ? "bg-green-500"
+                              : "bg-red-500"
+                          } h-8 w-50`}
+                        >
+                          <p className="text-black py-1">{ticket.status}</p>
+                        </div>
+                      </td>
 
-                    <td className="border-b border-accent py-5 px-4">
-                      <Link
-                        to={`/ticket/${ticket._id}`}
-                        className="flex justify-center"
-                      >
-                        <button className="hover:text-black">
-                          <FaRegEye className="text-primary text-2xl hover:text-accent text-center" />
-                        </button>
-                      </Link>
-                    </td>
-                  </tr>
-                );
-              })}
+                      <td className="border-b border-accent py-5 px-4">
+                        <Link
+                          to={`/ticket/${ticket._id}`}
+                          className="flex justify-center"
+                        >
+                          <button className="hover:text-black">
+                            <FaRegEye className="text-primary text-2xl hover:text-accent text-center" />
+                          </button>
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
         </div>
