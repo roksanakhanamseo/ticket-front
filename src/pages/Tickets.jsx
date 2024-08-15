@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
 import { FaRegEye } from "react-icons/fa";
+import NoData from "../components/atoms/NoData";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
@@ -24,6 +25,7 @@ function Tickets() {
   });
 
   if (isFetching) return <Loader />;
+  if (!data) return <NoData />;
   return (
     <>
       <div className=" rounded-sm border border-stroke px-5 pt-20 pb-2.5 shadow sm:px-7.5 xl:pb-1 mt-6 md:w-[80%] mx-auto my-20">
