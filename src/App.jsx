@@ -1,4 +1,3 @@
-// import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/moleculas/Navbar";
 import SignUp from "./pages/SignUp";
