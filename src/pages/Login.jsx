@@ -113,7 +113,13 @@ function Login() {
 
               <Field as="div" className="flex gap-x-4 ">
                 <Label className="text-sm leading-6 text-gray-300">
-                  Don't Have An Account? <Link to="/signup">Sign Up</Link>
+                  Don't Have An Account?{" "}
+                  <Link
+                    className="text-red-500 hover:underline font-bold"
+                    to="/signup"
+                  >
+                    Sign Up
+                  </Link>
                 </Label>
               </Field>
             </div>

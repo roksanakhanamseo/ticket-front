@@ -12,7 +12,7 @@ const Home = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{
-          duration: 0.5,
+          duration: 1,
           ease: "easeInOut",
         }}
       >
@@ -23,7 +23,7 @@ const Home = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{
-          duration: 0.5,
+          duration: 1,
           ease: "easeInOut",
         }}
       >

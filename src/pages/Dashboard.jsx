@@ -33,7 +33,6 @@ function Dashboard() {
         </Link>
       </div>
       <div className="bg-black mt-20">
-        {" "}
         <Footer />
       </div>
     </div>

@@ -23,9 +23,10 @@ function Tickets() {
     },
     refetchOnWindowFocus: false,
   });
-
+  console.log(data);
   if (isFetching) return <Loader />;
-  if (!data) return <NoData />;
+  if (data.message == "Authorization Failed") return <NoData />;
+  if (data == undefined) return <NoData />;
   return (
     <>
       <div className=" rounded-sm border border-stroke px-5 pt-20 pb-2.5 shadow sm:px-7.5 xl:pb-1 mt-6 md:w-[80%] mx-auto my-20">

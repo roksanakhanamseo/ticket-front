@@ -7,13 +7,11 @@ const HeroSection = () => {
     <div>
       <div className="main-bg min-h-[100vh] mx-auto flex flex-col md:flex-row pt-10 gap-32 items-center justify-center ">
         <motion.div
-          initial={{ y: 500, opacity: 0.5 }}
+          initial={{ y: 50, opacity: 0.5 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
             duration: 1,
-            ease: "linear",
             type: "tween",
-            delay: 0.5,
           }}
           className=" flex flex-col "
         >
@@ -33,13 +31,11 @@ const HeroSection = () => {
         </motion.div>
 
         <motion.div
-          initial={{ y: -600, opacity: 0.5 }}
+          initial={{ y: -50, opacity: 0.5 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
             duration: 1,
-            ease: "linear",
             type: "tween",
-            delay: 0.5,
           }}
           className=" flex flex-col "
         >
