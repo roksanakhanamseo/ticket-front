@@ -1,11 +1,9 @@
-import { Field, Label, Switch } from "@headlessui/react";
+import { Field, Label } from "@headlessui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/moleculas/Footer";
-import { useState } from "react";
 export default function Contact() {
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const handleSubmit = async () => {
     toast.info("Sending mail ....");
@@ -85,23 +83,6 @@ export default function Contact() {
 
               <div className="sm:col-span-2">
                 <label
-                  htmlFor="company"
-                  className="block text-sm font-semibold leading-6 "
-                >
-                  Company
-                </label>
-                <div className="mt-2.5">
-                  <input
-                    type="text"
-                    name="company"
-                    id="company"
-                    autoComplete="organization"
-                    className="block w-full rounded-md border-0 px-3.5 py-2  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black text-black focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-              <div className="sm:col-span-2">
-                <label
                   htmlFor="email"
                   className="block text-sm font-semibold leading-6 "
                 >
@@ -117,22 +98,7 @@ export default function Contact() {
                   />
                 </div>
               </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="phone-number"
-                  className="block text-sm font-semibold leading-6 "
-                >
-                  Phone number
-                </label>
-                <div className="relative mt-2.5">
-                  <input
-                    type="number"
-                    name="phone-number"
-                    id="phone-number"
-                    className="block w-full text-black rounded-md border-0 px-1 py-2 pl-5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
+
               <div className="sm:col-span-2">
                 <label
                   htmlFor="message"
@@ -166,9 +132,12 @@ export default function Contact() {
                 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                transition={{
+                  duration: 0.5,
+                }}
                 className="block text-white  w-full rounded-md bg-red-400 px-3.5 py-2.5 text-center text-sm   shadow-sm hover:bg-red-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                {loading ? "Sending..." : "Send"}
+                Send
               </motion.button>
             </div>
           </motion.form>
