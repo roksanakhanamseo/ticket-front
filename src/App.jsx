@@ -12,7 +12,9 @@ import NewTicket from "./pages/NewTicket";
 import Ticket from "./pages/Ticket";
 import Tickets from "./pages/Tickets";
 import Login from "./pages/Login";
+import { useLocation } from "react-router-dom";
 function App() {
+  let location = useLocation();
   return (
     <AnimatePresence mode="popLayout">
       <motion.div
