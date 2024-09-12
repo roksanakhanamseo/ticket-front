@@ -16,10 +16,14 @@ const NewTicket = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   const [formData, setFormData] = useState({
-    seating: "",
-    payment: "",
+    seating: "Platinum",
+    payment: "Visa",
     description: "",
   });
+
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
 
   const { data: userData, isFetching } = useQuery({
     queryKey: ["user"],
@@ -39,10 +43,6 @@ const NewTicket = () => {
   });
 
   const newTicketFn = () => {
-    let seating = document.getElementById("seating").value;
-    let payment = document.getElementById("payment").value;
-    let description = document.getElementById("description").value;
-    setFormData({ seating, payment, description });
     const data = fetch(
       "https://ticket-back-production.up.railway.app/api/tickets",
       {
@@ -109,6 +109,7 @@ const NewTicket = () => {
             Seating Location:
           </label>
           <select
+            onChange={(e) => handleChange(e)}
             className="w-full px-4 py-2 mt-1 border rounded-md"
             name="seating"
             id="seating"
@@ -126,6 +127,7 @@ const NewTicket = () => {
           <select
             className="w-full px-4 py-2 mt-1 border rounded-md"
             name="payment"
+            onChange={(e) => handleChange(e)}
             defaultChecked="Visa"
             defaultValue="Visa"
             id="payment"
@@ -139,6 +141,7 @@ const NewTicket = () => {
           </label>
           <textarea
             id="description"
+            onChange={(e) => handleChange(e)}
             name="description"
             rows={4}
             className="mt-3 p-5 w-full block bg-slate-200 h-32 rounded-md"
@@ -155,7 +158,6 @@ const NewTicket = () => {
         </form>
       </div>
       <div className="text-slate-300 mt-20 bg-black">
-        {" "}
         <Footer />
       </div>
     </div>
