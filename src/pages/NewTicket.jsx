@@ -43,6 +43,9 @@ const NewTicket = () => {
   });
 
   const newTicketFn = () => {
+    toast.info(
+      "As this is a demo website, it does not require payment. This can be introduced on the production website."
+    );
     const data = fetch(
       "https://ticket-back-production.up.railway.app/api/tickets",
       {
