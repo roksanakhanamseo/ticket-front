@@ -29,7 +29,7 @@ function Ticket() {
   const newNote = (data) => {
     setLoad(true);
     const res = fetch(
-      `https://ticket-back-production.up.railway.app/api/tickets/notes/${ticketId}`,
+      `https://ticket-back-lzw0.onrender.com/api/tickets/notes/${ticketId}`,
       {
         method: "POST",
         headers: {
@@ -63,7 +63,7 @@ function Ticket() {
   const handleDelete = (id) => {
     setLoad(true);
     const del = fetch(
-      `https://ticket-back-production.up.railway.app/api/tickets/notes/${ticketId}`,
+      `https://ticket-back-lzw0.onrender.com/api/tickets/notes/${ticketId}`,
       {
         method: "DELETE",
         headers: {
@@ -81,15 +81,12 @@ function Ticket() {
   };
   const handleClose = () => {
     setLoad(true);
-    fetch(
-      `https://ticket-back-production.up.railway.app/api/tickets/${ticketId}`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: `${localStorage.getItem("auth")}`,
-        },
-      }
-    ).then((res) => {
+    fetch(`https://ticket-back-lzw0.onrender.com/api/tickets/${ticketId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `${localStorage.getItem("auth")}`,
+      },
+    }).then((res) => {
       queryClient.invalidateQueries({ queryKey: ["note", "ticket"] });
       toast.success("Ticket closed successfully");
       navigate("/tickets");
@@ -100,7 +97,7 @@ function Ticket() {
     queryKey: ["ticket"],
     queryFn: () => {
       return fetch(
-        `https://ticket-back-production.up.railway.app/api/tickets/${ticketId}`,
+        `https://ticket-back-lzw0.onrender.com/api/tickets/${ticketId}`,
         {
           method: "GET",
           headers: {
@@ -117,7 +114,7 @@ function Ticket() {
     queryKey: ["note"],
     queryFn: () => {
       return fetch(
-        `https://ticket-back-production.up.railway.app/api/tickets/notes/${ticketId}`,
+        `https://ticket-back-lzw0.onrender.com/api/tickets/notes/${ticketId}`,
         {
           method: "GET",
           headers: {

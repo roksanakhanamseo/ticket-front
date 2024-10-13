@@ -17,7 +17,7 @@ export default function SignUp() {
   };
   const signUpHandler = (i) => {
     const res = fetch(
-      "https://ticket-back-production.up.railway.app/api/users/register",
+      "https://ticket-back-lzw0.onrender.com/api/users/register",
       {
         method: "POST",
         headers: {

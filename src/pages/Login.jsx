@@ -12,16 +12,13 @@ function Login() {
     Mutation.mutate({ email, password });
   };
   const loginHandler = (p) => {
-    const res = fetch(
-      "https://ticket-back-production.up.railway.app/api/users/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(p),
-      }
-    );
+    const res = fetch("https://ticket-back-lzw0.onrender.com/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(p),
+    });
     return res;
   };
 

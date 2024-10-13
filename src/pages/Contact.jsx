@@ -11,17 +11,14 @@ export default function Contact() {
     const email = document.getElementById("email").value;
     const message = document.getElementById("message").value;
     // send email
-    const res = await fetch(
-      "https://ticket-back-production.up.railway.app/send/mail",
-      {
-        method: "POST",
-        headers: {
-          authorization: `${localStorage.getItem("auth")}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name, email, message }),
-      }
-    );
+    const res = await fetch("https://ticket-back-lzw0.onrender.com/send/mail", {
+      method: "POST",
+      headers: {
+        authorization: `${localStorage.getItem("auth")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, message }),
+    });
     const data = await res.json();
     if (data.success == true) {
       toast.success(data.message);

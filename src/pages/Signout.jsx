@@ -18,7 +18,7 @@ function SignOut() {
   };
   const SignOutHandler = async () => {
     const res = await fetch(
-      "https://ticket-back-production.up.railway.app/api/users/sign-out",
+      "https://ticket-back-lzw0.onrender.com/api/users/sign-out",
       {
         method: "POST",
         headers: {

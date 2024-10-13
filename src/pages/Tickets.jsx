@@ -10,16 +10,13 @@ function Tickets() {
   const { data, isFetching } = useQuery({
     queryKey: ["ticket"],
     queryFn: () => {
-      return fetch(
-        "https://ticket-back-production.up.railway.app/api/tickets",
-        {
-          method: "GET",
-          headers: {
-            authorization: `${localStorage.getItem("auth")}`,
-            "Content-Type": "application/json",
-          },
-        }
-      ).then((res) => res.json());
+      return fetch("https://ticket-back-lzw0.onrender.com/api/tickets", {
+        method: "GET",
+        headers: {
+          authorization: `${localStorage.getItem("auth")}`,
+          "Content-Type": "application/json",
+        },
+      }).then((res) => res.json());
     },
     refetchOnWindowFocus: false,
   });

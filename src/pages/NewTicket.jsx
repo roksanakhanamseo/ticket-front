@@ -28,16 +28,13 @@ const NewTicket = () => {
   const { data: userData, isFetching } = useQuery({
     queryKey: ["user"],
     queryFn: () => {
-      return fetch(
-        "https://ticket-back-production.up.railway.app/api/users/me",
-        {
-          method: "GET",
-          headers: {
-            authorization: `${localStorage.getItem("auth")}`,
-            "Content-Type": "application/json",
-          },
-        }
-      ).then((res) => res.json());
+      return fetch("https://ticket-back-lzw0.onrender.com/api/users/me", {
+        method: "GET",
+        headers: {
+          authorization: `${localStorage.getItem("auth")}`,
+          "Content-Type": "application/json",
+        },
+      }).then((res) => res.json());
     },
     refetchOnWindowFocus: false,
   });
@@ -46,17 +43,14 @@ const NewTicket = () => {
     toast.info(
       "As this is a demo website, it does not require payment. This can be introduced on the production website."
     );
-    const data = fetch(
-      "https://ticket-back-production.up.railway.app/api/tickets",
-      {
-        method: "POST",
-        headers: {
-          authorization: `${localStorage.getItem("auth")}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      }
-    );
+    const data = fetch("https://ticket-back-lzw0.onrender.com/api/tickets", {
+      method: "POST",
+      headers: {
+        authorization: `${localStorage.getItem("auth")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
     console.log(data);
     return data;
   };
